@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/datos_registro_preliminar.dart';
 import '../pages/pantalla_carga.dart';
 import '../pages/pantalla_login.dart';
 import '../pages/pantalla_registro.dart';
@@ -38,7 +39,13 @@ Route<dynamic> generarRutas(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => PantallaRegistro());
 
     case Rutas.registroInfoPerfil:
-      return MaterialPageRoute(builder: (_) => PantallaRegistroInfoPerfil());
+      final args = settings.arguments;
+      if (args is DatosRegistroPreliminar) {
+        return MaterialPageRoute(
+          builder: (_) => PantallaRegistroInfoPerfil(datosRegistro: args),
+        );
+      }
+      return MaterialPageRoute(builder: (_) => PantallaRegistro());
 
     case Rutas.busqueda:
       return MaterialPageRoute(builder: (_) => PantallaBusqueda());

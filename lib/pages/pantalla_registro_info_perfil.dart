@@ -7,7 +7,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/auth_service.dart';
 
 class PantallaRegistroInfoPerfil extends StatefulWidget {
-  const PantallaRegistroInfoPerfil({Key? key}) : super(key: key);
+  final DatosRegistroPreliminar datosRegistro;
+
+  const PantallaRegistroInfoPerfil({
+    Key? key,
+    required this.datosRegistro,
+  }) : super(key: key);
 
   @override
   State<PantallaRegistroInfoPerfil> createState() =>
@@ -29,11 +34,9 @@ class _PantallaRegistroInfoPerfilState
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // Obtener los datos pasados desde pantalla_registro.dart
-    datosRegistro =
-        ModalRoute.of(context)?.settings.arguments as DatosRegistroPreliminar;
+  void initState() {
+    super.initState();
+    datosRegistro = widget.datosRegistro;
   }
 
   // Diálogo para seleccionar múltiples servicios

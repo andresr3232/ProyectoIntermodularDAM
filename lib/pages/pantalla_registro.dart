@@ -105,7 +105,7 @@ class _PantallaRegistroState extends State<PantallaRegistro> {
 
                 // Ubicación
                 DropdownButtonFormField<String>(
-                  value: provinciaSeleccionada,
+                  initialValue: provinciaSeleccionada,
                   decoration: _inputDecoration('Provincia'),
                   items: Provincias.provincias
                       .map(
